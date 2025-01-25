@@ -38,6 +38,7 @@ export class RegisterElement extends LitElement {
     }
 
     summaryValues() {
+        let subTotal = 0;
 
         this.products.forEach((product) => {
             const unitValue = parseFloat(product.unitValue) || 0;
@@ -46,12 +47,13 @@ export class RegisterElement extends LitElement {
         });
 
         const vat = (subTotal * 0.19);
-        const total = (vat + subTotal)
+        const total = subTotal + vat;
 
         return {subTotal, vat, total}
     }
 
     render() {
+        const {subTotal, vat, total} = this.summaryValues();
         return html /*HTML*/ `
         <!--Cartas para registrar productos-->
         <div class="col-12">
@@ -127,6 +129,22 @@ export class RegisterElement extends LitElement {
             `)}
         </tbody>
       </table>
+      <!--Card con la información general de la factura-->
+        <div class="d-flex justify-content-end">
+            <div id="card" class="card border-0 shadow-sm rounded">
+            <div id="card_header" class="card-header text-center fw-bold">
+                Invoice Summary
+            </div>
+            <ul class="list-group list-group-flush">
+                <!--Subtotal del valor de la factura-->
+                <li id="subTotalInvoice" class="list-group-item d-flex justify-content-between align-items-center">SubTotal: ${subTotal.toFixed(2)}</li>
+                <!--Impuesto respecto al subtotal de la factura-->
+                <li id="vatInvoice" class="list-group-item d-flex justify-content-between align-items-center">VAT (19%): ${vat.toFixed(2)}</li>
+                <!--Valor total de la factura-->
+                <li id="totalInvoice" class="list-group-item d-flex justify-content-between align-items-center">TOTAL: ${total.toFixed(2)}</li>
+            </ul>
+            </div>
+        </div>
         `;
     }
 
