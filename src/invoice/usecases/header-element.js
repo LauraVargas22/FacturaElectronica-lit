@@ -3,8 +3,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
 export class HeaderElement extends LitElement {
+
+    static properties = {
+        personalData: {type: Object},
+    }
     constructor() {
-        super()
+        super(),
+        this.personalData = {
+            numID: '',
+            names: '',
+            surname: '',
+            email: '', 
+            address: ''
+        }
+    }
+
+    updatePersonalData(field, value) {
+        this.personalData = {
+            ...this.personalData,
+            [field]: value, // Actualiza solo el campo correspondiente.
+        };
     }
 
     createRenderRoot(){

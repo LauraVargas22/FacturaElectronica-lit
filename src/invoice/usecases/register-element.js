@@ -6,6 +6,7 @@ export class RegisterElement extends LitElement {
     
     static properties = {
         products: { type: Array },
+        summary: {type: Object},
     }
 
     constructor() {
@@ -39,17 +40,23 @@ export class RegisterElement extends LitElement {
 
     summaryValues() {
         let subTotal = 0;
-
+        
         this.products.forEach((product) => {
             const unitValue = parseFloat(product.unitValue) || 0;
             const quantity = parseFloat(product.quantity) || 0;
             subTotal += unitValue * quantity;
         });
-
+        
         const vat = (subTotal * 0.19);
         const total = subTotal + vat;
+        
+        this.summary = {
+            subTotal,
+            vat,
+            total,
+        }
 
-        return {subTotal, vat, total}
+        return this.summary;
     }
 
     render() {
@@ -67,14 +74,14 @@ export class RegisterElement extends LitElement {
                     <div class="row mt-3" id="numProducts${product.id}">
                     <!--Código del producto generado automáticamente-->
                     <div class="row p-4">
-                        <label for="cod" class="col-3 form-label">COD</label>
+                        <label for="cod" class="col-6 form-label">COD</label>
                         <div class="col-6">
                         <input class="form-control" type="text" value="${product.id}" placeholder="${product.id}" aria-label="Disabled input example" disabled>
                         </div>
                     </div>
                     <!--Input para el nombre del producto-->
                     <div class="row p-4">
-                        <label class="col-3 form-label">Name Product</label>
+                        <label class="col-6 form-label">Name Product</label>
                         <div class="col-6">
                             <input type="text" class="border-secondary form-control product-input" @input="${(e) => this.updateProductField(product.id, 'nameProduct', e.target.value)}" .value="${product.nameProduct}" required/>
                         </div>
@@ -101,34 +108,36 @@ export class RegisterElement extends LitElement {
               </div>
             </div>
         </div>
-        <table id="tableProducts" class="table">
-        <!--Encabezado de la tabla-->
-        <thead>
-          <tr>
-            <th>COD</th>
-            <th>NAME</th>
-            <th>V/UNIT</th>
-            <th>QUANTITY</th>
-            <th>SUBT</th>
-            <th>-</th>
-          </tr>
-        </thead>
-        <!--Cuerpo de la tabla-->
-        <tbody>
-          <!--Por cada producto se agrega una fila con la información respectiva-->
-          ${this.products.map((product) => html /*HTML*/ `
-            <tr>
-            <td>${product.id}</td>
-            <td id="tableName">${product.nameProduct}</td>
-            <td id="tableUnitValue">${product.unitValue}</td>
-            <td id="tableQuantity">${product.quantity}</td>
-            <td id="tableSubTotal">${((parseFloat(product.unitValue)|| 0) * (parseFloat(product.quantity) || 0)).toFixed(2)}</td>
-            <!--Botón para eliminar producto desde la tabla-->
-            <td><button @click="${this.removeProduct}" type="button" class="btn btn-danger remove-product" data-id="${product.id}">-</button></td>
-            </tr>
-            `)}
-        </tbody>
-      </table>
+        <div class="table-responsive">
+            <table id="tableProducts" class="table">
+                <!--Encabezado de la tabla-->
+                <thead>
+                <tr>
+                    <th>COD</th>
+                    <th>NAME</th>
+                    <th>V/UNIT</th>
+                    <th>QUANTITY</th>
+                    <th>SUBT</th>
+                    <th>-</th>
+                </tr>
+                </thead>
+                <!--Cuerpo de la tabla-->
+                <tbody>
+                <!--Por cada producto se agrega una fila con la información respectiva-->
+                ${this.products.map((product) => html /*HTML*/ `
+                    <tr>
+                    <td>${product.id}</td>
+                    <td id="tableName">${product.nameProduct}</td>
+                    <td id="tableUnitValue">${product.unitValue}</td>
+                    <td id="tableQuantity">${product.quantity}</td>
+                    <td id="tableSubTotal">${((parseFloat(product.unitValue)|| 0) * (parseFloat(product.quantity) || 0)).toFixed(2)}</td>
+                    <!--Botón para eliminar producto desde la tabla-->
+                    <td><button @click="${this.removeProduct}" type="button" class="btn btn-danger remove-product" data-id="${product.id}">-</button></td>
+                    </tr>
+                    `)}
+                </tbody>
+            </table>
+        </div>
       <!--Card con la información general de la factura-->
         <div class="d-flex justify-content-end">
             <div id="card" class="card border-0 shadow-sm rounded">
