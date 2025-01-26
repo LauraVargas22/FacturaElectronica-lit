@@ -18,11 +18,14 @@ export class HeaderElement extends LitElement {
         }
     }
 
-    updatePersonalData(field, value) {
+    updatePersonalData(event) {
+        const field = event.target.name;
+        const value = event.target.value;
         this.personalData = {
             ...this.personalData,
             [field]: value, // Actualiza solo el campo correspondiente.
         };
+        return this.personalData;
     }
 
     createRenderRoot(){
@@ -37,40 +40,40 @@ export class HeaderElement extends LitElement {
             <label for="numInvoice" class="col-3 form-label">Num Invoice</label>
             <div class="col-6">
             <!--ID predeterminado-->
-            <input class="form-control" type="text" placeholder="${numInvoice}" aria-label="Disabled input example" disabled>
+            <input class="form-control" @input="${this.updatePersonalData}" type="text" placeholder="${numInvoice}" aria-label="Disabled input example" disabled>
             </div>
         </div>
         <!--Identificación-->
         <div class="row p-4">
             <label for="numID" class="col-3 form-label">ID</label>
             <div class="col-6">
-            <input type="number" class="form-control" name="numID" id="numId" placeholder="Enter ID..." required>
+            <input type="number" @input="${this.updatePersonalData}" class="form-control" name="numID" id="numId" placeholder="Enter ID..." required>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 p-4">
             <!--Nombres-->
             <div class="col">
                 <label for="names" class="form-label">Name</label>
-                <input id="names" type="text" class="form-control" name="names" placeholder="Enter Names..." required>
+                <input id="names" @input="${this.updatePersonalData}" type="text" class="form-control" name="names" placeholder="Enter Names..." required>
             </div>
             <!--Apellidos-->
             <div class="col">
                 <label for="surname" class="form-label">Surname</label>
-                <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter Surname..." required>
+                <input type="text" @input="${this.updatePersonalData}" class="form-control" id="surname" name="surname" placeholder="Enter Surname..." required>
             </div>
         </div>
         <!--Dirección-->
         <div class="row p-4">
             <label for="address" class="col-3 form-label">Address</label>
             <div class="col-6">
-                <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address..." required>
+                <input type="text" @input="${this.updatePersonalData}" class="form-control" name="address" id="address" placeholder="Enter Address..." required>
             </div>
         </div>
         <!--Email-->
         <div class="row p-4">
             <label for="email" class="col-3 form-label">Email</label>
             <div class="col-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email..." required>
+                <input type="email" @input="${this.updatePersonalData}" class="form-control" name="email" id="email" placeholder="Enter email..." required>
             </div>
         </div>
         `

@@ -74,7 +74,7 @@ export class RegisterElement extends LitElement {
                     <div class="row mt-3" id="numProducts${product.id}">
                     <!--Código del producto generado automáticamente-->
                     <div class="row p-4">
-                        <label for="cod" class="col-6 form-label">COD</label>
+                        <label for="cod" class="col- form-label">COD</label>
                         <div class="col-6">
                         <input class="form-control" type="text" value="${product.id}" placeholder="${product.id}" aria-label="Disabled input example" disabled>
                         </div>

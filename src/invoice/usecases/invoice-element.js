@@ -209,12 +209,20 @@ export class InvoiceElement extends LitElement {
     }
 
     popUpOpen() {
+        /* const {names, surname, numID} = this.invoiceModel.personalData;
+        if(!names || !surname || !numID) {
+            Swal.fire({
+                title: "Error",
+                text: "Please, complete all personal data",
+                icon: "warning",
+            });
+            return;
+        } */
         this.visible = true;
     }
 
     popUpClose() {
         this.visible = false;
-        location.reload();
     }
 
     confirm(){
@@ -243,7 +251,7 @@ export class InvoiceElement extends LitElement {
         <div id="popup" class="popup" style="display: ${this.visible ? 'block' : 'none'};">
             <div class="col">
                 <h1 class="title_popup">Invoice</h1>
-                <p class="header_popup" id="popUpName">Sr@ ${names} ${surname}</p> <!--Nombre Comprador-->
+                <p class="header_popup" id="popUpName">Sr@ ${names}</p> <!--Nombre Comprador-->
                 <p class="header_popup" id="popUpID">Identificación: ${numID}</p> <!--Identificación del usuario-->
             </div>
             <!--Tabla resumen de la compra realizada-->
