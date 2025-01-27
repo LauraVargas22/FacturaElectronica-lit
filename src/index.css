@@ -5,15 +5,16 @@
   box-sizing: border-box;
 }
 
+/*Estilos del deslizador*/
 body::-webkit-scrollbar {
   width: 0.3rem;
 }
-/*Estilos del deslizador*/
 body::-webkit-scrollbar-thumb {
   background: linear-gradient(#323542, #080530);
   border-radius: 1rem;
 }
 
+/*Estilos label*/
 .form-label {
   font-family: "Roboto", serif;
   color: #0E1047;
@@ -28,6 +29,7 @@ input {
   padding: 10px;
 }
 
+/* Título Principal */
 .title {
   background-color: #0E1047;
   color: white;
@@ -37,18 +39,13 @@ input {
   font-size: 2.5rem;
 }
 
+/* Formulario información personal */
 .form {
   background-color: #DFE5ED;
   padding: 1rem;
 }
 
-.form label {
-  font-family: "Roboto", serif;
-  color: #0E1047;
-  font-weight: 500;
-  font-size: 1.5rem;
-}
-
+/*Card registro de productos*/
 #products_title {
   font-family: "Courier Prime", serif;
   font-weight: 600;
@@ -66,44 +63,6 @@ input {
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-}
-
-/* Título */
-h1 {
-  text-align: center;
-  font-weight: bold;
-  color: #34495e;
-  margin-bottom: 30px;
-}
-
-/* Inputs */
-input {
-  border-radius: 8px;
-  border: 1px solid #ced4da;
-  padding: 10px;
-}
-
-/* Botones */
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  border-radius: 20px;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-.btn-danger {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  border-radius: 20px;
-}
-
-.btn-danger:hover {
-  background-color: #c0392b;
-  border-color: #c0392b;
 }
 
 /* Tabla */
@@ -138,7 +97,7 @@ table tr:nth-child(even) {
 table tr:hover {
   background-color: #f1f1f1;
 }
-/*Card*/
+/*Card Summary*/
 #card {
   width: 50rem;
   background-color: white;
@@ -281,43 +240,11 @@ li {
   transition: background-color 0.3s ease;
 }
 
-/* Tabla */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  font-family: "Roboto", serif;
-  font-weight: 500;
-  font-size: 1.5rem;
-}
-
-table th {
-  background-color: #34495e;
-  color: white;
-  text-align: left;
-  padding: 10px;
-}
-
-table td {
-  padding: 10px;
-  border-bottom: 1px solid #dddddd;
-}
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-table tr:hover {
-  background-color: #f1f1f1;
-}
+/*Deslizador pop up*/
 .popup::-webkit-scrollbar:horizontal {
   width: 0.3rem;
   height: 0.3rem
 }
-/*Deslizador pop up*/
 .popup::-webkit-scrollbar {
   width: 0.3rem;
 }
