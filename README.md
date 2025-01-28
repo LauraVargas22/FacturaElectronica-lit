@@ -1,5 +1,5 @@
 # Factura Electrónica LIT
-Desarrollo de factura electrónica por medio de información ingresada por el usuario, esto se realizó por medio de VITE usando LIT y Javascript. El proyecto se puede visualizar en el siguiente link: 
+Desarrollo de factura electrónica por medio de información ingresada por el usuario, esto se realizó por medio de VITE usando LIT y Javascript. El proyecto se puede visualizar en el siguiente link: **https://electronicinvoicelit.netlify.app/**
 
 El proyecto se realizó mediante diversas tecnologías las cuales fueron: Vite con LIT, Bootstrap, Javascript, HTML, CSS, Sweetalert2.
 
